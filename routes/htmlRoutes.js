@@ -1,6 +1,5 @@
 const router = require("express").Router();
-const { response } = require("express");
-const { request } = require("http");
+
 const path = require("path")
 
 router.get("/notes", (request, response) => {
