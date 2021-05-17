@@ -7,8 +7,12 @@ router.get("/api/notes", (request, response) => {
   response.json(savedNotes);
 });
 
-router.post("/api/notes", () => {
+router.post("/api/notes", (request, response) => {
   console.log("post request called");
+  let savedNotes = JSON.parse(fs.readFileSync("./db/db.json", "utf-8"));
+  savedNotes.push(request.body);
+  fs.writeFileSync("./db/db.json", JSON.stringify(savedNotes));
+  response.json(request.body)
 });
 
 module.exports = router;
